@@ -51,7 +51,7 @@ def webhook():
 						break
 	
 			if (not found):
-				with open("users.txt", "a+"):
+				with open("users.txt", "a+") as userlist:
 					userlist.write(sender_id)
 					send_message(sender_id, "Successfully registered")
 
