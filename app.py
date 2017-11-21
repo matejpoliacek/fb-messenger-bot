@@ -41,16 +41,16 @@ def webhook():
                     message_text = messaging_event["message"]["text"]  # the message's text
 		    
 		    if (message_text == 'register'):
-			found = false
+			found = False
 			with open("users.txt:", "a") as userlist:
 				for line in userlist:
 					line = line.rstrip()
 					if (line == sender_id):
 						send_message(sender_id, "You are already registered!")
-						found = true
+						found = True
 						break
 
-				if (!found):
+				if (not found):
 					userlist.write(sender_id)
 
 		    else:
