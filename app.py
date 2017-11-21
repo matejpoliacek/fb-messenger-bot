@@ -39,8 +39,22 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
+		    
+		    if (message_text == 'register'):
+			found = false
+			with open("users.txt:", "a") as userlist:
+				for line in userlist:
+					line = line.rstrip()
+					if (line == sender_id):
+						send_message(sender_id, "You are already registered!")
+						found = true
+						break
 
-                    send_message(sender_id, "roger that!")
+				if (!found):
+					userlist.write(sender_id)
+
+		    else:
+	                send_message(sender_id, "roger, that!")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
