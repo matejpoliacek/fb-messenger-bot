@@ -52,6 +52,7 @@ def webhook():
 
 				if (not found):
 					userlist.write(sender_id)
+					send_message(sender_id, "Successfully registered")
 
 		    else:
 	                send_message(sender_id, "roger, that!")
