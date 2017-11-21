@@ -42,7 +42,7 @@ def webhook():
 		    
 		    if (message_text == 'register'):
 			found = False
-			with open("users.txt:", "r+") as userlist:
+			with open("users.txt", "r+") as userlist:
 				for line in userlist:
 					line = line.rstrip()
 					if (line == sender_id):
