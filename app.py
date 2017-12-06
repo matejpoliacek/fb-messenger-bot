@@ -5,6 +5,7 @@ from datetime import datetime
 
 import requests
 from flask import Flask, request
+from msgs import check_msg
 
 app = Flask(__name__)
 
@@ -40,23 +41,7 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 		    
-		    if (message_text == 'register'):
-			found = False
-			with open("users.txt", "r+") as userlist:
-				for line in userlist:
-					line = line.rstrip()
-					if (line == sender_id):
-						send_message(sender_id, "You are already registered!")
-						found = True
-						break
-	
-			if (not found):
-				with open("users.txt", "a+") as userlist:
-					userlist.write(sender_id)
-					send_message(sender_id, "Successfully registered")
-
-		    else:
-	                send_message(sender_id, "roger, that!")
+		    user_id = check_msg(message_text, sender_id)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
