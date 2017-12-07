@@ -1,10 +1,9 @@
 from pyowm import OWM
 import datetime
-from secrets import get_API_KEY
+import os
 #from weather import Weather
 
-OWM_API_KEY = get_API_KEY()
-owm = OWM(OWM_API_KEY)
+owm = OWM(os.environ['OWM_API_KEY'])
 
 now = datetime.datetime.now()
 
