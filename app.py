@@ -42,6 +42,7 @@ def webhook():
                     message_text = messaging_event["message"]["text"]  # the message's text
 		    
 		    check_msg(message_text, sender_id)
+		## maybe a change might be in order here, i.e. only pass finalised messages to app.py and handle sending here
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass

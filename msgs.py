@@ -1,5 +1,6 @@
 from db_script import check_fbID, write_fbID, get_all_users
 from weather_script import get_weather
+from app import send_message
 
 weather_report = "Hey! Today is a good day to bike to ESTEC!"
 
