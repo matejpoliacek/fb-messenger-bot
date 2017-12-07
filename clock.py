@@ -1,5 +1,5 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-import msgs.py
+import msgs
 
 sched = BlockingScheduler()
 
