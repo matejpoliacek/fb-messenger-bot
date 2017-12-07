@@ -39,3 +39,9 @@ def write_fbID(in_id):
 	conn.commit()
 	db_close()
 
+def get_all_users():
+	db.connect()
+	cur.execute('SELECT * FROM userID;')
+	all_ids = cur.fetchall()
+	db.close()
+	return all_ids

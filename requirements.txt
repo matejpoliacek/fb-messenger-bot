@@ -10,4 +10,4 @@ wsgiref==0.1.2
 apscheduler==3.0.0
 weather-api==0.0.4
 pyowm
-pcycopg2
+psycopg2

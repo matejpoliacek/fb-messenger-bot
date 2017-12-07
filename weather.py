@@ -23,10 +23,4 @@ def get_weather():
 		if owm_obs[x].will_be_rainy_at(am) or owm_obs[x].will_be_rainy_at(pm):
 			will_rain = True
 
-	print str(will_rain)
-
-#def weather_msg():
-#	response = get_weather()
-#	return response
-
-get_weather()
+	return will_rain
