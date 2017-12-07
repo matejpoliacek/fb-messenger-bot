@@ -26,7 +26,7 @@ def db_close(cur, conn):
 def check_fbID(in_id):
 	conn = db_connect()
 	cur = conn.cursor()
-	cur.execute('SELECT EXISTS (SELECT 1 FROM userID WHERE fb_id = %s LIMIT 1)', str(in_id))
+	cur.execute('SELECT EXISTS (SELECT 1 FROM userID WHERE fb_id = %s LIMIT 1)', (in_id,))
 	if cur.rowcount == 0:
 		db_close(cur, conn)
 		return false
@@ -37,7 +37,7 @@ def check_fbID(in_id):
 def write_fbID(in_id):
 	conn =	db_connect()	
 	cur = conn.cursor()
-	cur.execute('INSERT INTO userID (fb_id) VALUES (%s)', str(in_id))
+	cur.execute('INSERT INTO userID (fb_id) VALUES (%s)', (in_id,))
 	conn.commit()
 	db_close(cur, conn)
 
