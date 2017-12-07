@@ -17,31 +17,34 @@ def db_connect():
 	except:
 		print "Cannot connect to DB"
 
-	cur = conn.cursor()
+	return conn
 
-def db_close():
+def db_close(cur, conn):
 	cur.close()
 	conn.close()
 
 def check_fbID(in_id):
-	db_connect()
+	conn = db_connect()
+	cur = conn.cursor()
 	cur.execute('SELECT EXISTS (SELECT 1 FROM userID WHERE fb_id = %s LIMIT 1)', in_id)
 	if cur.rowcount == 0:
-		db_close()
+		db_close(cur, conn)
 		return false
 	else:
-		db_close()
+		db_close(cur, conn)
 		return true
 
 def write_fbID(in_id):
-	db_connect()	
+	conn =	db_connect()	
+	cur = conn.cursor()
 	cur.execute('INSERT INTO userID (fb_id) VALUES (%s)', in_id)
 	conn.commit()
-	db_close()
+	db_close(cur, conn)
 
 def get_all_users():
-	db.connect()
+	conn = db.connect()
+	cur = conn.cursor()
 	cur.execute('SELECT * FROM userID;')
 	all_ids = cur.fetchall()
-	db.close()
+	db.close(cur, conn)
 	return all_ids
