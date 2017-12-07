@@ -1,5 +1,5 @@
-import db
-import weather
+import db_script
+import weather_script
 
 weather_report = "Hey! Today is a good day to bike to ESTEC!"
 
