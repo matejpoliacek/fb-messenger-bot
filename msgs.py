@@ -1,5 +1,5 @@
-import db_script
-import weather_script
+from db_script import check_fbID, write_fbID, get_all_users
+from weather_script import get_weather
 
 weather_report = "Hey! Today is a good day to bike to ESTEC!"
 

@@ -1,5 +1,5 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-import msgs
+from msgs import weather_msg
 
 sched = BlockingScheduler()
 
