@@ -29,10 +29,10 @@ def check_fbID(in_id):
 	cur.execute('SELECT EXISTS (SELECT 1 FROM userdb WHERE fb_id = %s LIMIT 1)', (in_id,))
 	if cur.rowcount == 0:
 		db_close(cur, conn)
-		return false
+		return False
 	else:
 		db_close(cur, conn)
-		return true
+		return True
 
 def write_fbID(in_id):
 	conn =	db_connect()	
