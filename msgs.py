@@ -37,4 +37,6 @@ def unreg_msg(sender_id):
 		send_message(sender_id, "You now are unregistered. Feel free to come back using 'register' at any time!")
 
 def help_msg(sender_id):
-	send_message(sender_id, "Commands currently available:\nregister - add yourself to the list\nunregister - remove yourself from the list)
+	send_message(sender_id, "Commands currently available:<br>
+				register - add yourself to the list<br>
+				unregister - remove yourself from the list")
