@@ -41,6 +41,13 @@ def write_fbID(in_id):
 	conn.commit()
 	db_close(cur, conn)
 
+def remove_fbID(in_id)
+	conn = db_connect()
+	cur = conn.cursor()
+	cur.execute('DELETE FROM userdb WHERE fb_id = %s', (in_id,))
+	conn.commit()
+	db_close(cur, conn)	
+
 def get_all_users():
 	conn = db.connect()
 	cur = conn.cursor()
