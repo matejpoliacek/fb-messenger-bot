@@ -26,6 +26,7 @@ def db_close(cur, conn):
 def check_fbID(in_id):
 	conn = db_connect()
 	cur = conn.cursor()
+	in_id = "\'" + in_id + "\'"
 	cur.execute('SELECT COUNT (fb_id) FROM userdb WHERE fb_id = %s;', (in_id,))
 	found = cur.fetchall()
 	if found[0] == 0:
@@ -40,10 +41,10 @@ def check_post(in_id):
 	cur = conn.cursor()
 	cur.execute('SELECT post FROM userdb WHERE fb_id = %s;', (in_id,))
 	post_result = cur.fetchall()
-	if post_result[0] == 1:
-		return True
-	else:
+	if post_result[0] == 0:
 		return False
+	else:
+		return True
 
 
 def write_fbID(in_id):
