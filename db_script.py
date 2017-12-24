@@ -26,14 +26,14 @@ def db_close(cur, conn):
 def check_fbID(in_id):
 	conn = db_connect()
 	cur = conn.cursor()
-	cur.execute('SELECT EXISTS (SELECT 1 FROM userdb WHERE fb_id = %s LIMIT 1)', (in_id,))
+	cur.execute('SELECT EXISTS (SELECT true FROM userdb WHERE fb_id = %s LIMIT 1)', (in_id,))
 	found = cur.fetchall()
-	if found[0] == 'f':
-		db_close(cur, conn)
-		return False
-	else:
+	if found[0] == 'true':
 		db_close(cur, conn)
 		return True
+	else:
+		db_close(cur, conn)
+		return False
 
 def check_post(in_id):
 	conn = db_connect()
