@@ -1,4 +1,4 @@
-from db_script import check_fbID, write_fbID, remove_fbID, get_all_users
+from db_script import check_fbID, write_fbID, check_post, mute_fbID, unmute_fbID, get_all_users
 from weather_script import get_weather
 from responses import send_message, log
 
@@ -26,15 +26,24 @@ def reg_msg(sender_id):
 		write_fbID(sender_id)
 		send_message(sender_id, "Successfully registered")
 	else:
-		send_message(sender_id, "Already registered!")
+		if (check_post(sender_id)):
+			send_message(sender_id, "Already registered!")
+		else:
+			send_message(sender_id, "Successfully registered, welcome back!")
+	
 
 def unreg_msg(sender_id):
 	found = check_fbID(sender_id)
+	reply = "You were not registered at the moment, no need to unregister."	
+
 	if (not found):
-		send_message(sender_id, "You were not registered at the moment, no need to unregister.")
+		send_message(sender_id, reply)
 	else:
-		remove_fbID(sender_id)
-		send_message(sender_id, "You now are unregistered. Feel free to come back using 'register' at any time!")
+		if (check_post(sender_id)):
+			mute_fbID(sender_id)
+			send_message(sender_id, "You now are unregistered. Feel free to come back using 'register' at any time!")
+		else:
+			send_message(sender_id, reply)
 
 def help_msg(sender_id):
 	send_message(sender_id, "Commands currently available:\nregister - add yourself to the list\nunregister - remove yourself from the list")

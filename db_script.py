@@ -34,24 +34,42 @@ def check_fbID(in_id):
 		db_close(cur, conn)
 		return True
 
+def check_post(in_id):
+	conn = db_connect()
+	cur = conn.cursor()
+	cur.execute('SELECT post FROM userdb WHERE fb_id = %s', (in_id,))
+	post_result = cur.fetchall()
+	if post_result(1) == 1:
+		return True
+	else:
+		return False
+
+
 def write_fbID(in_id):
 	conn =	db_connect()	
 	cur = conn.cursor()
-	cur.execute('INSERT INTO userdb (fb_id) VALUES (%s)', (in_id,))
+	cur.execute('INSERT INTO userdb (fb_id, post) VALUES (%s, 1)', (in_id,))
 	conn.commit()
 	db_close(cur, conn)
 
-def remove_fbID(in_id):
+def mute_fbID(in_id):
 	conn = db_connect()
 	cur = conn.cursor()
-	cur.execute('DELETE FROM userdb WHERE fb_id = %s', (in_id,))
+	cur.execute('UPDATE userdb SET post = 0 WHERE fb_id = %s', (in_id,))
 	conn.commit()
-	db_close(cur, conn)	
+	db_close(cur, conn)
+
+def unmute_fbID(in_id)
+	conn = db_connect()
+	cur = conn.cursor()
+	cur.execute('UPDATE userdb SET post = 1 WHERE fb_id = %s', (in_id,))
+	conn.commit()
+	db_close(cur, conn)
 
 def get_all_users():
 	conn = db.connect()
 	cur = conn.cursor()
-	cur.execute('SELECT * FROM userdb;')
+	cur.execute('SELECT fb_id FROM userdb WHERE post = 1;')
 	all_ids = cur.fetchall()
 	db.close(cur, conn)
 	return all_ids
