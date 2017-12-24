@@ -7,9 +7,9 @@ weather_report = "Hey! Today is a good day to bike to ESTEC!"
 def check_msg(message_text, sender_id):
 	if (message_text == 'register'):
 		reg_msg(sender_id)
-	if (message_text == 'unregister'):
+	elif (message_text == 'unregister'):
 		unreg_msg(sender_id)
-	if (message_text == 'help'):
+	elif (message_text == 'help'):
 		help_msg(sender_id)
 	else:
 		send_message(sender_id, "roger, that!")
