@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+import requests
 
 def send_message(recipient_id, message_text):
 
