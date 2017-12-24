@@ -27,7 +27,8 @@ def check_fbID(in_id):
 	conn = db_connect()
 	cur = conn.cursor()
 	cur.execute('SELECT EXISTS (SELECT 1 FROM userdb WHERE fb_id = %s LIMIT 1)', (in_id,))
-	if cur.rowcount == 0:
+	found = cur.fetchall()
+	if found[0] == 'f':
 		db_close(cur, conn)
 		return False
 	else:
