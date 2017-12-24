@@ -59,7 +59,7 @@ def mute_fbID(in_id):
 	conn.commit()
 	db_close(cur, conn)
 
-def unmute_fbID(in_id)
+def unmute_fbID(in_id):
 	conn = db_connect()
 	cur = conn.cursor()
 	cur.execute('UPDATE userdb SET post = 1 WHERE fb_id = %s', (in_id,))
