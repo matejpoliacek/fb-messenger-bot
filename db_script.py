@@ -44,7 +44,7 @@ def write_fbID(in_id):
 def remove_fbID(in_id):
 	conn = db_connect()
 	cur = conn.cursor()
-	cur.execute('DELETE FROM userdb WHERE fb_id = (SELECT EXISTS (SELECT 1 FROM userdb WHERE fb_id = %s LIMIT 1))', (in_id,))
+	cur.execute('DELETE FROM userdb WHERE fb_id = (SELECT 1 FROM userdb WHERE fb_id = %s LIMIT 1)', (in_id,))
 	conn.commit()
 	db_close(cur, conn)	
 
