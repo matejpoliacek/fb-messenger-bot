@@ -39,7 +39,7 @@ def check_post(in_id):
 	cur = conn.cursor()
 	cur.execute('SELECT post FROM userdb WHERE fb_id = %s', (in_id,))
 	post_result = cur.fetchall()
-	if post_result(1) == 1:
+	if post_result[0] == 1:
 		return True
 	else:
 		return False
