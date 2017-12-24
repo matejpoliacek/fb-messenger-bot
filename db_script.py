@@ -26,7 +26,7 @@ def db_close(cur, conn):
 def check_fbID(in_id):
 	conn = db_connect()
 	cur = conn.cursor()
-	cur.execute('SELECT EXISTS (SELECT true FROM userdb WHERE fb_id = %s LIMIT 1)', (in_id,))
+	cur.execute('SELECT EXISTS (SELECT true FROM userdb WHERE fb_id = %s LIMIT 1);', (in_id,))
 	found = cur.fetchall()
 	if found[0] == 'true':
 		db_close(cur, conn)
@@ -38,7 +38,7 @@ def check_fbID(in_id):
 def check_post(in_id):
 	conn = db_connect()
 	cur = conn.cursor()
-	cur.execute('SELECT post FROM userdb WHERE fb_id = %s', (in_id,))
+	cur.execute('SELECT post FROM userdb WHERE fb_id = %s;', (in_id,))
 	post_result = cur.fetchall()
 	if post_result[0] == 1:
 		return True
@@ -49,21 +49,21 @@ def check_post(in_id):
 def write_fbID(in_id):
 	conn =	db_connect()	
 	cur = conn.cursor()
-	cur.execute('INSERT INTO userdb (fb_id, post) VALUES (%s, 1)', (in_id,))
+	cur.execute('INSERT INTO userdb (fb_id, post) VALUES (%s, 1);', (in_id,))
 	conn.commit()
 	db_close(cur, conn)
 
 def mute_fbID(in_id):
 	conn = db_connect()
 	cur = conn.cursor()
-	cur.execute('UPDATE userdb SET post = 0 WHERE fb_id = %s', (in_id,))
+	cur.execute('UPDATE userdb SET post = 0 WHERE fb_id = %s;', (in_id,))
 	conn.commit()
 	db_close(cur, conn)
 
 def unmute_fbID(in_id):
 	conn = db_connect()
 	cur = conn.cursor()
-	cur.execute('UPDATE userdb SET post = 1 WHERE fb_id = %s', (in_id,))
+	cur.execute('UPDATE userdb SET post = 1 WHERE fb_id = %s;', (in_id,))
 	conn.commit()
 	db_close(cur, conn)
 
