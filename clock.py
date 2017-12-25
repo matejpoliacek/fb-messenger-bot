@@ -1,5 +1,14 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 from msgs import weather_msg
+import logging
+
+log = logging.getLogger('apscheduler.executors.default')
+log.setLevel(logging.INFO)  # DEBUG
+
+fmt = logging.Formatter('%(levelname)s:%(name)s:%(message)s')
+h = logging.StreamHandler()
+h.setFormatter(fmt)
+log.addHandler(h)
 
 sched = BlockingScheduler()
 
