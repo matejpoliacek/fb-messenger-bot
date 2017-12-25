@@ -82,5 +82,5 @@ def get_all_users():
 	cur = conn.cursor()
 	cur.execute('SELECT fb_id FROM userdb WHERE post = 1;')
 	all_ids = cur.fetchall()
-	db.close(cur, conn)
+	db_close(cur, conn)
 	return all_ids
