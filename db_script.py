@@ -78,7 +78,7 @@ def unmute_fbID(in_id):
 	db_close(cur, conn)
 
 def get_all_users():
-	conn = db.connect()
+	conn = db_connect()
 	cur = conn.cursor()
 	cur.execute('SELECT fb_id FROM userdb WHERE post = 1;')
 	all_ids = cur.fetchall()
