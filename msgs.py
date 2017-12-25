@@ -29,6 +29,7 @@ def reg_msg(sender_id):
 		if (check_post(sender_id)):
 			send_message(sender_id, "Already registered!")
 		else:
+			unmute_fbID(sender_id)
 			send_message(sender_id, "Successfully registered, welcome back!")
 	
 

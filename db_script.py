@@ -32,8 +32,8 @@ def check_fbID(in_id):
 	found = cur.fetchall()
 	for x in found:
 		extract = x[0]
-	sys.stdout.write(str(extract))
-	sys.stdout.flush()
+	#sys.stdout.write(str(extract))
+	#sys.stdout.flush()
 	if extract == 0:
 		db_close(cur, conn)
 		return True
@@ -48,8 +48,8 @@ def check_post(in_id):
 	post_result = cur.fetchall()
 	for x in post_result:
 		extract = x[0]
-	sys.stdout.write(str(extract))
-	sys.stdout.flush()
+	#sys.stdout.write(str(extract))
+	#sys.stdout.flush()
 	if extract == 0:
 		return False
 	else:
