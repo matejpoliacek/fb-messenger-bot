@@ -8,4 +8,8 @@ def scheduled_job():
 	print('This is a morning job')
 	weather_msg()
 
+@sched.scheduled_job('interval', minutes=120)
+def timed_job():
+	weather_msg()
+
 sched.start()
