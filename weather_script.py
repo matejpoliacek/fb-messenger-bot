@@ -16,8 +16,7 @@ def get_weather():
 	will_rain = False
 
 	for x in range(0, len(owm_obs)):
-		#day = now.strftime("%Y-%m-%d")
-		day = '2017-12-26'
+		day = now.strftime("%Y-%m-%d")
 		am = day + " 07:30:00+00"
 		pm = day +" 16:30:00+00"
 		if owm_obs[x].will_be_rainy_at(am) or owm_obs[x].will_be_rainy_at(pm):
