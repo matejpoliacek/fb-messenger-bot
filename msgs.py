@@ -18,7 +18,11 @@ def weather_msg():
 	if not get_weather():
 		all_ids = get_all_users()
 		for user_id in all_ids:
-			send_message(user_id, weather_report)
+			send_message(user_id[0], weather_report)
+	else: 
+		all_ids = get_all_users()
+		for user_id in all_ids:
+			send_message(user_id[0], "test")
 
 def reg_msg(sender_id):
 	found = check_fbID(sender_id)
