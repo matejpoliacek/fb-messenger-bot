@@ -16,7 +16,7 @@ def get_weather():
 	
 	# set up desired format
 	day = now.strftime("%Y-%m-%d")
-	am = day + " 16:00:00+00"
+	am = day + " 08:00:00+00"
 	pm = day +" 17:00:00+00"
 	
 	# array for extracted Forecast objects

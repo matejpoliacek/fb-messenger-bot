@@ -17,8 +17,9 @@ def scheduled_job():
 	print('This is a morning job')
 	weather_msg()
 
-@sched.scheduled_job('interval', minutes=5)
-def timed_job():
-	weather_msg()
+# testing job
+#@sched.scheduled_job('interval', minutes=5)
+#def timed_job():
+#	weather_msg()
 
 sched.start()
