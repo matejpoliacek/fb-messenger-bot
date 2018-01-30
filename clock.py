@@ -20,6 +20,7 @@ def scheduled_job():
 # dummy job to keep awake 
 @sched.scheduled_job('interval', minutes=60)
 def scheduled_job():
+	print('This is a regular job, keeping the app awake')
 	# do nothing
 
 
