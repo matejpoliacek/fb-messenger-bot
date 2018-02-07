@@ -1,6 +1,7 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 from msgs import weather_msg
 import logging
+import sys
 
 log = logging.getLogger('apscheduler.executors.default')
 log.setLevel(logging.INFO)  # DEBUG
@@ -12,10 +13,11 @@ log.addHandler(h)
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('cron', day_of_week='mon-fri', hour=14)
+@sched.scheduled_job('cron', day_of_week='mon-fri', hour=21)
 def scheduled_job():
 	print('This is a morning job')
-	weather_msg()
+	sys.stdout.flush()
+	#weather_msg()
 
 # dummy job to keep awake 
 @sched.scheduled_job('interval', minutes=60)
