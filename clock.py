@@ -13,16 +13,17 @@ log.addHandler(h)
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('cron', day_of_week='mon-fri', hour=21)
+@sched.scheduled_job('cron', day_of_week='mon-fri', hour=6)
 def scheduled_job():
 	print('This is a morning job')
 	sys.stdout.flush()
-	#weather_msg()
+	weather_msg()
 
 # dummy job to keep awake 
 @sched.scheduled_job('interval', minutes=60)
 def scheduled_job():
 	print('This is a regular job, keeping the app awake')
+	sys.stdout.flush()
 	# do nothing
 
 
