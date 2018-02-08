@@ -20,7 +20,7 @@ def scheduled_job():
 	weather_msg()
 
 # dummy job to keep awake 
-@sched.scheduled_job('interval', minutes=60)
+@sched.scheduled_job('interval', minutes=30)
 def scheduled_job():
 	print('This is a regular job, keeping the app awake')
 	sys.stdout.flush()
