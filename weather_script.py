@@ -48,7 +48,7 @@ def get_weather():
 	elif will_rain and (will_rain_commute_am or will_rain_commute_pm):
 		response = ":( Rain forecast during"
 		if will_rain_commute_am and will_rain_commute_pm:
-			response = response " morning and afternoon"
+			response = response + " morning and afternoon"
 		elif will_rain_commute_am:
 			response = response + " morning"
 		elif will_rain_commute_pm:
