@@ -5,7 +5,7 @@ import re
 
 def clean_msg(text):
 	text = ''.join(text.split()).lower()
-	text = re.sub(r'[a-zA-Z]', '', text)
+	text = re.sub(r'[^a-zA-Z]', '', text)
 	return text
 
 def check_msg(message_text, sender_id):
