@@ -1,6 +1,7 @@
 from db_script import check_fbID, write_fbID, check_post, mute_fbID, unmute_fbID, get_all_users
 from weather_script import get_weather
 from responses import send_message, log
+import re
 
 def clean_msg(text):
 	text = ''.join(text.split()).lower()
