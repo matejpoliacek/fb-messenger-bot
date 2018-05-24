@@ -51,4 +51,4 @@ def unreg_msg(sender_id):
 			send_message(sender_id, reply)
 
 def help_msg(sender_id):
-	send_message(sender_id, "Welcome to ESTEC Bike Weather Bot! Commands currently available:\nregister - add yourself to the list\nunregister - remove yourself from the list\n\nReports are sent out at 5:00 UTC")
+	send_message(sender_id, "Welcome to ESTEC Bike Weather Bot!\n\nCommands currently available:\nregister - add yourself to the list\nunregister - remove yourself from the list\n\nReports are sent out at 5:00 UTC")
