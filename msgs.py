@@ -2,9 +2,13 @@ from db_script import check_fbID, write_fbID, check_post, mute_fbID, unmute_fbID
 from weather_script import get_weather
 from responses import send_message, log
 
-weather_report = "Hey! Today is a good day to bike to ESTEC!"
+def clean_msg(text):
+	text = ''.join(text.split()).lower()
+	text = re.sub(r'[a-zA-Z]', '', text)
+	return text
 
 def check_msg(message_text, sender_id):
+	message_text = clean_msg(message_text)
 	if (message_text == 'register'):
 		reg_msg(sender_id)
 	elif (message_text == 'unregister'):
@@ -12,17 +16,12 @@ def check_msg(message_text, sender_id):
 	elif (message_text == 'help'):
 		help_msg(sender_id)
 	else:
-		send_message(sender_id, "roger, that!")
+		send_message(sender_id, "Type 'help' for a list of available commands.")
 
 def weather_msg():
-	if not get_weather():
-		all_ids = get_all_users()
-		for user_id in all_ids:
-			send_message(user_id[0], weather_report)
-	else:
-		all_ids = get_all_users()
-		for user_id in all_ids:
-			send_message(user_id[0], "Today is not a good weather day")
+	all_ids = get_all_users()
+	for user_id in all_ids:
+		send_message(user_id[0], get_weather())
 
 def reg_msg(sender_id):
 	found = check_fbID(sender_id)
@@ -51,4 +50,4 @@ def unreg_msg(sender_id):
 			send_message(sender_id, reply)
 
 def help_msg(sender_id):
-	send_message(sender_id, "Commands currently available:\nregister - add yourself to the list\nunregister - remove yourself from the list")
+	send_message(sender_id, "Welcome to ESTEC Bike Weather Bot! Commands currently available:\nregister - add yourself to the list\nunregister - remove yourself from the list\n\nReports are sent out at 5:00 UTC")
