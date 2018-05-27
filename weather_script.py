@@ -34,9 +34,9 @@ def get_weather():
 		# fc_arr[x] = owm_obs[x].get_forecast()
 		
 		for hour in hours:
-			time = day + " " + hour + ":00:00+00"	
+			time = str(day) + " " + str(hour) + ":00:00+00"	
 			if owm_obs[x].will_be_rainy_at(time):
-				response_end = response_end + hour +":00 " 
+				response_end = response_end + str(hour) +":00 " 
 				will_rain = True
 				if hour < 9:
 					will_rain_commute_am = True
