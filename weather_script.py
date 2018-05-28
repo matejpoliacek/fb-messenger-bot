@@ -29,21 +29,21 @@ def get_weather():
 	will_rain_commute_am = False
 	will_rain_commute_pm = False
 	
-	for x in range(0, len(owm_obs)):
+	#for x in range(0, len(owm_obs)):
 		# extract Forecast object
 		# fc_arr[x] = owm_obs[x].get_forecast()
 		
-		for hour in hours:
-			time = str(day) + " " + str(hour) + ":00:00+00"	
-			if owm_obs[x].will_be_rainy_at(time):
-				response_end = response_end + str(hour) +":00 " 
-				will_rain = True
-				if hour < 9:
-					will_rain_commute_am = True
-				if hour > 16:
-					will_rain_commute_pm = True
-	
-	if will_rain and (not will_rain_commute_am or not will_rain_commute_pm):
+	for hour in hours:
+		time = str(day) + " " + str(hour) + ":00:00+00"	
+		if owm_obs[0].will_be_rainy_at(time) or owm_obs[1].will_be_rainy_at(time) or owm_obs[2].will_be_rainy_at(time):
+			response_end = response_end + str(hour) +":00 " 
+			will_rain = True
+			if hour < 10:
+				will_rain_commute_am = True
+			if hour > 16:
+				will_rain_commute_pm = True
+
+	if will_rain and not(will_rain_commute_am and will_rain_commute_pm):
 		response = ":| Be careful, rain forecast outside commute " + response_end
 	elif will_rain and (will_rain_commute_am or will_rain_commute_pm):
 		response = ":( Rain forecast during"
