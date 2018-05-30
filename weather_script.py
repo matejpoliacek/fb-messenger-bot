@@ -43,7 +43,7 @@ def get_weather():
 			if hour > 16:
 				will_rain_commute_pm = True
 
-	if will_rain and not(will_rain_commute_am and will_rain_commute_pm):
+	if will_rain and (not will_rain_commute_am and not will_rain_commute_pm):
 		response = ":| Be careful, rain forecast outside commute " + response_end
 	elif will_rain and (will_rain_commute_am or will_rain_commute_pm):
 		response = ":( Rain forecast during"
